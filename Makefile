@@ -6,7 +6,7 @@
 #    By: apple <apple@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/29 17:11:47 by apple             #+#    #+#              #
-#    Updated: 2025/03/29 17:26:35 by apple            ###   ########.fr        #
+#    Updated: 2025/03/30 19:10:44 by apple            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ RM = rm -f
 
 FLAGS = -Wall -Wextra -Werror -g
 
-SRC = pipex.c
+SRC = pipex.c \
+helpers.c
 
 OBJS = $(SRC:.c=.o)
 
@@ -28,7 +29,7 @@ LIBFT_NAME = libft.a
 
 $(NAME): $(OBJS)
 	make -C $(LIBFT_PATH)
-	$(CC) $(FLAGS) $(OBGS) -L$(LIBFT_PATH) -lft -o $(NAME)
+	$(CC) $(FLAGS) $(OBJS) -g -L$(LIBFT_PATH) -lft -o $(NAME)
 
 all: $(NAME)
 
