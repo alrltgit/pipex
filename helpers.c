@@ -6,11 +6,11 @@
 /*   By: apple <apple@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/30 18:22:48 by apple             #+#    #+#             */
-/*   Updated: 2025/03/31 15:56:28 by apple            ###   ########.fr       */
+/*   Updated: 2025/03/31 17:53:12 by apple            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "includes/pipex.h"
 
 static size_t size_of_str(char *str)
 {

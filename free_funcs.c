@@ -6,18 +6,20 @@
 /*   By: apple <apple@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 14:56:25 by apple             #+#    #+#             */
-/*   Updated: 2025/03/31 14:57:52 by apple            ###   ########.fr       */
+/*   Updated: 2025/03/31 17:53:09 by apple            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "includes/pipex.h"
 
 void free_array(char **array)
 {
     int i;
 
+    if (!array)
+        return ;
     i = 0;
-    while (array[i])
+    while (array[i] != NULL)
     {
         free(array[i]);
         i++;

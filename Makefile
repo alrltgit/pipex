@@ -6,7 +6,7 @@
 #    By: apple <apple@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/29 17:11:47 by apple             #+#    #+#              #
-#    Updated: 2025/03/31 16:33:12 by apple            ###   ########.fr        #
+#    Updated: 2025/03/31 21:52:55 by apple            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ CFLAGS = -Wall -Wextra -Werror -g
 SRC = pipex.c \
 helpers.c \
 free_funcs.c \
-commands_validation.c
+commands_validation.c \
+create_pipe.c
 
 OBJS = $(SRC:.c=.o)
 
