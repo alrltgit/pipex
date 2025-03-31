@@ -6,7 +6,7 @@
 #    By: apple <apple@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/29 17:11:47 by apple             #+#    #+#              #
-#    Updated: 2025/03/30 19:10:44 by apple            ###   ########.fr        #
+#    Updated: 2025/03/31 16:33:12 by apple            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,10 +14,12 @@ CC = cc
 
 RM = rm -f
 
-FLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -g
 
 SRC = pipex.c \
-helpers.c
+helpers.c \
+free_funcs.c \
+commands_validation.c
 
 OBJS = $(SRC:.c=.o)
 
@@ -28,18 +30,21 @@ LIBFT_PATH = libft
 LIBFT_NAME = libft.a
 
 $(NAME): $(OBJS)
-	make -C $(LIBFT_PATH)
-	$(CC) $(FLAGS) $(OBJS) -g -L$(LIBFT_PATH) -lft -o $(NAME)
+	@make -C $(LIBFT_PATH) --no-print-directory
+	@$(CC) $(CFLAGS) $(OBJS) -g -L$(LIBFT_PATH) -lft -o $(NAME)
 
 all: $(NAME)
+	@echo "Compilation completed successfully."
 
 clean:
-	make clean -C $(LIBFT_PATH)
-	$(RM) $(OBJS)
+	@make clean -C $(LIBFT_PATH) --no-print-directory
+	@$(RM) $(OBJS)
+	@echo "Object files removed."
 
 fclean: clean
-	$(RM) $(NAME)
-	$(RM) $(LIBFT_PATH)/$(LIBFT_NAME)
+	@$(RM) $(NAME)
+	@$(RM) $(LIBFT_PATH)/$(LIBFT_NAME)
+	@echo "Executable removed."
 
 re: fclean all
 

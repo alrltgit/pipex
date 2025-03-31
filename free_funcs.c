@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.c                                            :+:      :+:    :+:   */
+/*   free_funcs.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apple <apple@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/29 17:13:57 by apple             #+#    #+#             */
-/*   Updated: 2025/03/31 16:31:44 by apple            ###   ########.fr       */
+/*   Created: 2025/03/31 14:56:25 by apple             #+#    #+#             */
+/*   Updated: 2025/03/31 14:57:52 by apple            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int main(int argc, char **argv)
+void free_array(char **array)
 {
-    (void)argc;
-    do_commands_exist(argv);
-    return (0);
+    int i;
+
+    i = 0;
+    while (array[i])
+    {
+        free(array[i]);
+        i++;
+    }
+    free(array);
 }

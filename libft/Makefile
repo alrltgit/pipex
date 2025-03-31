@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: alraltse <alraltse@student.42.fr>          +#+  +:+       +#+         #
+#    By: apple <apple@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/16 23:43:44 by apple             #+#    #+#              #
-#    Updated: 2025/02/21 11:33:31 by alraltse         ###   ########.fr        #
+#    Updated: 2025/03/31 15:12:24 by apple            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,15 +41,16 @@ NAME = libft.a
 RM = rm -f
 
 all: $(NAME)
+	@echo "Libft.a compiled successfully."
 
 $(NAME): $(OBJS)
-	ar rcs $(NAME) $(OBJS)
+	@ar rcs $(NAME) $(OBJS)
 
 clean:
-	$(RM) $(OBJS)
+	@$(RM) $(OBJS)
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 
 re: fclean all
 

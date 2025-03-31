@@ -6,7 +6,7 @@
 #    By: apple <apple@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/23 12:57:58 by apple             #+#    #+#              #
-#    Updated: 2025/02/01 16:57:50 by apple            ###   ########.fr        #
+#    Updated: 2025/03/31 15:02:49 by apple            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,15 +27,15 @@ AR = ar rcs
 CFLAGS = -Wall -Wextra -Werror
 
 $(NAME): $(OBJS) 
-	$(AR) $(NAME) $(OBJS)
+	@$(AR) $(NAME) $(OBJS)
 
 all: $(NAME)
 
 clean:
-	$(RM) $(OBJS)
+	@$(RM) $(OBJS)
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 
 re: fclean all
 
