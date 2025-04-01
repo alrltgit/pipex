@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alraltse <alraltse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: apple <apple@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 17:12:22 by apple             #+#    #+#             */
-/*   Updated: 2025/04/01 13:33:39 by alraltse         ###   ########.fr       */
+/*   Updated: 2025/04/01 17:15:39 by apple            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int cmd_2_is_valid(t_cmd *c, char **cmd_folders, char **argv);
 void find_command(t_cmd *c, char **argv, char **cmd_folders);
 int do_commands_exist(t_cmd *c, char **argv, char **cmd_folders);
 
-void create_pipe(char **argv);
+void find_command(t_cmd *c, char **argv, char **cmd_folders);
+
+void create_pipe(t_cmd *c, char **argv);
 
 #endif

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: alraltse <alraltse@student.42.fr>          +#+  +:+       +#+         #
+#    By: apple <apple@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/29 17:11:47 by apple             #+#    #+#              #
-#    Updated: 2025/04/01 13:39:39 by alraltse         ###   ########.fr        #
+#    Updated: 2025/04/01 16:36:43 by apple            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ SRC = pipex.c \
 helpers.c \
 free_funcs.c \
 commands_validation.c \
-create_pipe.c
+create_pipe.c \
+find_cmd.c
 
 OBJS = $(SRC:.c=.o)
 
