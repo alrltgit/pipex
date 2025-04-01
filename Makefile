@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: apple <apple@student.42.fr>                +#+  +:+       +#+         #
+#    By: alraltse <alraltse@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/29 17:11:47 by apple             #+#    #+#              #
-#    Updated: 2025/03/31 21:52:55 by apple            ###   ########.fr        #
+#    Updated: 2025/04/01 13:39:39 by alraltse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,9 +33,9 @@ LIBFT_NAME = libft.a
 $(NAME): $(OBJS)
 	@make -C $(LIBFT_PATH) --no-print-directory
 	@$(CC) $(CFLAGS) $(OBJS) -g -L$(LIBFT_PATH) -lft -o $(NAME)
+	@echo "Compilation completed successfully."
 
 all: $(NAME)
-	@echo "Compilation completed successfully."
 
 clean:
 	@make clean -C $(LIBFT_PATH) --no-print-directory

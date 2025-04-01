@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apple <apple@student.42.fr>                +#+  +:+       +#+        */
+/*   By: alraltse <alraltse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 17:12:22 by apple             #+#    #+#             */
-/*   Updated: 2025/03/31 21:52:45 by apple            ###   ########.fr       */
+/*   Updated: 2025/04/01 13:33:39 by alraltse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,16 @@
 # include <fcntl.h>
 # include "../libft/libft.h"
 
-#define PATH_USR_LOCAL_BIN "/usr/local/bin/"
+#define PATH_HOMES_BIN "/nfs/homes/alraltse/bin/"
 #define PATH_USR_LOCAL_SBIN "/usr/local/sbin/"
-#define PATH_SYSTEM_USR_BIN "/System/Cryptexes/App/usr/bin/"
-#define PATH_USR_BIN "/usr/bin/"
-#define BIN "/bin/"
-#define USR_SBIN "/usr/sbin/"
+#define PATH_SYSTEM_USR_BIN "/usr/local/bin/"
+#define USER_SBIN "/usr/sbin/"
+#define USER_BIN "/usr/bin/"
 #define SBIN "/sbin/"
-#define USER_BIN "/Users/apple/Library/Python/3.9/bin/"
-#define SECURITY_LOCAL_BIN "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
-#define SECURITY_USER_BIN "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
-#define BOOTSTRAP_BIN "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
-#define LIBRARY_BIN "/Library/Apple/usr/bin/"
+#define BIN "/bin/"
+#define USR_GAMES "/usr/games/"
+#define USR_LOCAL_GAMES "/usr/local/games/"
+#define SNAP_BIN "/snap/bin/"
 
 typedef struct s_cmd
 {
