@@ -1,0 +1,20 @@
+total 116
+-rw-r--r-- 1 alraltse 2024_warsaw  1542 Apr  2 13:35 Makefile
+-rw-r--r-- 1 alraltse 2024_warsaw  1899 Apr  1 13:22 commands_validation.c
+-rw-r--r-- 1 alraltse 2024_warsaw  4632 Apr  3 17:40 commands_validation.o
+-rw-r--r-- 1 alraltse 2024_warsaw  6991 Apr  1 14:00 comments.c
+-rw-r--r-- 1 alraltse 2024_warsaw  2721 Apr  3 17:40 create_pipe.c
+-rw-r--r-- 1 alraltse 2024_warsaw  5936 Apr  3 17:40 create_pipe.o
+-rw-r--r-- 1 alraltse 2024_warsaw  1826 Apr  3 15:19 find_cmd.c
+-rw-r--r-- 1 alraltse 2024_warsaw  4048 Apr  3 17:40 find_cmd.o
+-rw-r--r-- 1 alraltse 2024_warsaw  1105 Apr  1 13:22 free_funcs.c
+-rw-r--r-- 1 alraltse 2024_warsaw  2488 Apr  3 17:40 free_funcs.o
+-rw-r--r-- 1 alraltse 2024_warsaw  2827 Apr  1 13:36 helpers.c
+-rw-r--r-- 1 alraltse 2024_warsaw  6320 Apr  3 17:40 helpers.o
+drwxr-xr-x 2 alraltse 2024_warsaw  4096 Apr  2 13:35 includes
+-rw-r--r-- 1 alraltse 2024_warsaw   574 Apr  3 15:14 infile
+drwxr-xr-x 4 alraltse 2024_warsaw  4096 Apr  3 17:40 libft
+-rwxr-xr-x 1 alraltse 2024_warsaw     0 Apr  3 17:40 outfile
+-rwxr-xr-x 1 alraltse 2024_warsaw 32208 Apr  3 17:40 pipex
+-rw-r--r-- 1 alraltse 2024_warsaw  1171 Apr  2 13:35 pipex.c
+-rw-r--r-- 1 alraltse 2024_warsaw  3000 Apr  3 17:40 pipex.o
