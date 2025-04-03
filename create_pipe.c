@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_pipe.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alraltse <alraltse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: apple <apple@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 17:49:04 by apple             #+#    #+#             */
-/*   Updated: 2025/04/02 16:33:22 by alraltse         ###   ########.fr       */
+/*   Updated: 2025/04/03 15:01:42 by apple            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ void create_pipe(t_cmd *c, char **argv)
     pid_t pid_1;
     pid_t pid_2;
 
-    (void)c;
-    (void)argv;
+    // (void)c;
+    // (void)argv;
     if (pipe(pipe_fd) == -1) {
         perror("pipe error");
         return ;
@@ -59,10 +59,9 @@ void create_pipe(t_cmd *c, char **argv)
             perror("Error opening pipe_fd_1.\n");
             exit(EXIT_FAILURE);
         }
-        pipe_fd_1 = dup(STDIN_FILENO);
-        pipe_fd[1] = dup(pipe_fd_1);
-        ft_printf("buffer: %s\n", get_next_line(pipe_fd_1));
+        dup2(pipe_fd_1, STDIN_FILENO);
         execve(c->cmd_1, args_1, envp);
+        
     }
     // ft_printf("argv[1]: %s", argv[1]);
     pid_2 = fork();
@@ -73,19 +72,16 @@ void create_pipe(t_cmd *c, char **argv)
     }
     else if (pid_2 == 0) // child process 2
     {
-        pipe_fd_2 = open(argv[4], O_WRONLY);
+        pipe_fd_2 = open(argv[4], O_RDWR);
         if (pipe_fd_2 < 0)
         {
             perror("Error opening pipe_fd_2.\n");
             exit(EXIT_FAILURE);
         }
-        // pipe_fd[0] = dup(pipe_fd[1]);
-        pipe_fd_2 = dup(pipe_fd[0]);
         execve(c->cmd_2, args_2, envp);
+        // pipe_fd[0] = dup(pipe_fd[1]);
+        pipe_fd_2 = dup(pipe_fd[1]);
     }
     close(pipe_fd[0]);
     close(pipe_fd[1]);
-
-    // waitpid(pid_1, NULL, 0);
-    // waitpid(pid_2, NULL, 0);
 }
