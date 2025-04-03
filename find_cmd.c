@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apple <apple@student.42.fr>                +#+  +:+       +#+        */
+/*   By: alraltse <alraltse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 16:33:43 by apple             #+#    #+#             */
-/*   Updated: 2025/04/01 16:36:17 by apple            ###   ########.fr       */
+/*   Updated: 2025/04/03 15:19:52 by alraltse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void find_command(t_cmd *c, char **argv, char **cmd_folders)
     {
         c->cmd_1 = find_cmd_1(cmd_folders, argv);
         c->cmd_2 = find_cmd_2(cmd_folders, argv);
-        ft_printf("c->cmd_1: %s\n", c->cmd_1);
-        ft_printf("c->cmd_2: %s\n", c->cmd_2);
+        // ft_printf("c->cmd_1: %s\n", c->cmd_1);
+        // ft_printf("c->cmd_2: %s\n", c->cmd_2);
     }
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_pipe.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apple <apple@student.42.fr>                +#+  +:+       +#+        */
+/*   By: alraltse <alraltse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 17:49:04 by apple             #+#    #+#             */
-/*   Updated: 2025/04/03 15:01:42 by apple            ###   ########.fr       */
+/*   Updated: 2025/04/03 15:58:04 by alraltse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,21 @@ void create_pipe(t_cmd *c, char **argv)
     pid_t pid_1;
     pid_t pid_2;
 
-    // (void)c;
-    // (void)argv;
+    (void)argv;
+    pipe_fd_1 = open("infile", O_RDONLY);
+    if (pipe_fd_1 < 0)
+    {
+        perror("Error opening pipe_fd_1.\n");
+        exit(EXIT_FAILURE);
+    }
+    dup2(pipe_fd_1, STDIN_FILENO);
+    pipe_fd_2 = open("./outfile", O_RDWR | O_CREAT | O_TRUNC, 0644);
+    {
+        perror("Error opening pipe_fd_2.\n");
+        exit(EXIT_FAILURE);
+    }
+    dup2(pipe_fd_2, STDOUT_FILENO);
+    
     if (pipe(pipe_fd) == -1) {
         perror("pipe error");
         return ;
@@ -49,39 +62,29 @@ void create_pipe(t_cmd *c, char **argv)
     if (pid_1 < 0)
     {
         perror("Fork one failed.");
-        return ;
+        exit(1);
     }
     else if (pid_1 == 0) // child process 1
     {
-        pipe_fd_1 = open(argv[1], O_RDWR);
-        if (pipe_fd_1 < 0)
-        {
-            perror("Error opening pipe_fd_1.\n");
-            exit(EXIT_FAILURE);
-        }
-        dup2(pipe_fd_1, STDIN_FILENO);
+        dup2(pipe_fd[0], STDIN_FILENO);
         execve(c->cmd_1, args_1, envp);
-        
+        close(pipe_fd[0]);
+        close(pipe_fd[1]);
     }
-    // ft_printf("argv[1]: %s", argv[1]);
     pid_2 = fork();
     if (pid_2 < 0)
     {
         ft_printf("Fork two failed.\n");
-        return ;
+        exit(1);
     }
     else if (pid_2 == 0) // child process 2
     {
-        pipe_fd_2 = open(argv[4], O_RDWR);
-        if (pipe_fd_2 < 0)
-        {
-            perror("Error opening pipe_fd_2.\n");
-            exit(EXIT_FAILURE);
-        }
+        dup2(pipe_fd[0], STDIN_FILENO);
         execve(c->cmd_2, args_2, envp);
-        // pipe_fd[0] = dup(pipe_fd[1]);
-        pipe_fd_2 = dup(pipe_fd[1]);
+        close(pipe_fd[0]);
+        close(pipe_fd[1]);
     }
     close(pipe_fd[0]);
     close(pipe_fd[1]);
+    while (wait(NULL) > 0);
 }
