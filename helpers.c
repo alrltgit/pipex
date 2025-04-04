@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helpers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alraltse <alraltse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: apple <apple@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/30 18:22:48 by apple             #+#    #+#             */
-/*   Updated: 2025/04/01 13:36:04 by alraltse         ###   ########.fr       */
+/*   Updated: 2025/04/04 16:29:20 by apple            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,28 @@ static size_t size_of_str(char *str)
     return (len);
 }
 
-char	*ft_strconcat(char *path, char *str)
+void find_flags(t_cmd *c, char **argv)
+{
+    char **argv_2_arr;
+    char **argv_3_arr;
+
+    argv_2_arr = ft_split(argv[2], ' ');
+    argv_3_arr = ft_split(argv[3], ' ');
+    c->flag_1 = argv_2_arr[1];
+    c->flag_2 = argv_3_arr[1];
+    ft_printf("c->flag_1: %s\n", c->flag_1);
+    ft_printf("c->flag_2: %s\n", c->flag_2);
+    free(argv_2_arr);
+    free(argv_3_arr);
+}
+
+char	*ft_strconcat(t_cmd *c, char *path, char *str)
 {
 	int i;
     int j;
     char *cmd;
 
+    (void)c;
     cmd = malloc(sizeof(char) * (ft_strlen(path) + size_of_str(str) + 1));
     if (!cmd)
     {

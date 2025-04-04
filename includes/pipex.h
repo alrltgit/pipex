@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alraltse <alraltse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: apple <apple@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 17:12:22 by apple             #+#    #+#             */
-/*   Updated: 2025/04/03 15:49:34 by alraltse         ###   ########.fr       */
+/*   Updated: 2025/04/04 16:07:42 by apple            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,11 @@ typedef struct s_cmd
 {
     char *cmd_1;
     char *cmd_2;
+    char *flag_1;
+    char *flag_2;
 } t_cmd;
 
-char	*ft_strconcat(char *path, char *str);
+char	*ft_strconcat(t_cmd *c, char *path, char *str);
 char    **allocate_memory();
 void    free_array(char **array);
 
@@ -49,5 +51,6 @@ int do_commands_exist(t_cmd *c, char **argv, char **cmd_folders);
 void find_command(t_cmd *c, char **argv, char **cmd_folders);
 
 void create_pipe(t_cmd *c, char **argv);
+void find_flags(t_cmd *c, char **argv);
 
 #endif
