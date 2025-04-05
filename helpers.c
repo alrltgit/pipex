@@ -6,7 +6,7 @@
 /*   By: apple <apple@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/30 18:22:48 by apple             #+#    #+#             */
-/*   Updated: 2025/04/04 16:29:20 by apple            ###   ########.fr       */
+/*   Updated: 2025/04/05 16:16:51 by apple            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,19 @@ static size_t size_of_str(char *str)
     return (len);
 }
 
-void find_flags(t_cmd *c, char **argv)
+char *ft_strcpy(char *cmd, char *str, int j)
 {
-    char **argv_2_arr;
-    char **argv_3_arr;
+    int i;
 
-    argv_2_arr = ft_split(argv[2], ' ');
-    argv_3_arr = ft_split(argv[3], ' ');
-    c->flag_1 = argv_2_arr[1];
-    c->flag_2 = argv_3_arr[1];
-    ft_printf("c->flag_1: %s\n", c->flag_1);
-    ft_printf("c->flag_2: %s\n", c->flag_2);
-    free(argv_2_arr);
-    free(argv_3_arr);
+    i = 0;
+    while (str[i] != ' ' && str[i])
+    {
+        cmd[j] = str[i];
+        j++;
+        i++;
+    }
+    cmd[j] = '\0';
+    return (cmd);
 }
 
 char	*ft_strconcat(t_cmd *c, char *path, char *str)
@@ -58,15 +58,7 @@ char	*ft_strconcat(t_cmd *c, char *path, char *str)
         i++;
         j++;
     }
-    i = 0;
-    while (str[i] != ' ' && str[i])
-    {
-        cmd[j] = str[i];
-        j++;
-        i++;
-    }
-    cmd[j] = '\0';
-    return (cmd);
+    return (ft_strcpy(cmd, str, j));
 }
 
 static void add_to_arr(char **cmd_folders)

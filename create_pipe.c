@@ -6,11 +6,12 @@
 /*   By: apple <apple@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 17:49:04 by apple             #+#    #+#             */
-/*   Updated: 2025/04/04 16:16:24 by apple            ###   ########.fr       */
+/*   Updated: 2025/04/05 16:27:34 by apple            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/pipex.h"
+
 
 void create_pipe(t_cmd *c, char **argv)
 {
@@ -36,7 +37,8 @@ void create_pipe(t_cmd *c, char **argv)
         perror("Error opening pipe_fd_2.\n");
         exit(EXIT_FAILURE);
     }
-    if (pipe(pipe_fd) == -1) {
+    if (pipe(pipe_fd) == -1)
+    {
         perror("pipe error");
         exit(1);
     }
@@ -46,12 +48,16 @@ void create_pipe(t_cmd *c, char **argv)
         perror("Fork one failed.");
         exit(1);
     }
-    else if (pid_1 == 0) // child process 1
+    else if (pid_1 == 0)
     {
+        dup2(pipe_fd_1, STDIN_FILENO);
         dup2(pipe_fd[1], STDOUT_FILENO);
-        execve(c->cmd_1, args_1, envp);
         close(pipe_fd[0]);
         close(pipe_fd[1]);
+        close(pipe_fd_1);
+        execve(c->cmd_1, args_1, envp);
+        perror("execve failed");
+        exit(EXIT_FAILURE);
     }
     pid_2 = fork();
     if (pid_2 < 0)
@@ -59,7 +65,7 @@ void create_pipe(t_cmd *c, char **argv)
         ft_printf("Fork two failed.\n");
         exit(1);
     }
-    else if (pid_2 == 0) // child process 2
+    else if (pid_2 == 0)
     {
         dup2(pipe_fd[0], STDIN_FILENO);
         close(pipe_fd[0]);
@@ -67,10 +73,26 @@ void create_pipe(t_cmd *c, char **argv)
         dup2(pipe_fd_2, STDOUT_FILENO);
         close(pipe_fd_2);
         execve(c->cmd_2, args_2, envp);
+        perror("execve failed");
+        exit(EXIT_FAILURE); // Ensure child process exits
     }
     close(pipe_fd[0]);
     close(pipe_fd[1]);
     close(pipe_fd_1);
     close(pipe_fd_2);
-    while (wait(NULL) > 0);
+    
+    while (1)
+    {
+        pid_t pid = wait(NULL);
+        if (pid == -1)
+        {
+            if (errno == ECHILD)
+                break;
+            else
+            {
+                perror("wait error");
+                exit(EXIT_FAILURE);
+            }
+        }
+    }
 }

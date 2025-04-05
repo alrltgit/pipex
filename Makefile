@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: alraltse <alraltse@student.42.fr>          +#+  +:+       +#+         #
+#    By: apple <apple@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/29 17:11:47 by apple             #+#    #+#              #
-#    Updated: 2025/04/03 17:44:51 by alraltse         ###   ########.fr        #
+#    Updated: 2025/04/05 13:55:21 by apple            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ helpers.c \
 free_funcs.c \
 commands_validation.c \
 create_pipe.c \
-find_cmd.c
+find_cmd.c \
+find_flags.c
 
 OBJS = $(SRC:.c=.o)
 

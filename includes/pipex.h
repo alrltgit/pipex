@@ -6,7 +6,7 @@
 /*   By: apple <apple@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 17:12:22 by apple             #+#    #+#             */
-/*   Updated: 2025/04/04 16:07:42 by apple            ###   ########.fr       */
+/*   Updated: 2025/04/05 14:54:13 by apple            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <string.h>
 # include <fcntl.h>
 # include <sys/wait.h>
+# include <errno.h>
 # include "../libft/libft.h"
 
 #define PATH_HOMES_BIN "/nfs/homes/alraltse/bin/"
