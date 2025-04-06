@@ -5,16 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: apple <apple@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/29 17:13:57 by apple             #+#    #+#             */
-/*   Updated: 2025/04/06 19:18:11 by apple            ###   ########.fr       */
+/*   Created: 2025/04/06 19:15:17 by apple             #+#    #+#             */
+/*   Updated: 2025/04/06 23:13:12 by apple            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/pipex.h"
+#include "../includes/pipex.h"
 
-int	main(int argc, char **argv)
+int main(int argc, char **argv)
 {
-	char	**cmd_folders;
 	t_cmd	*c;
 
 	if (argc < 5)
@@ -23,10 +22,7 @@ int	main(int argc, char **argv)
 		exit(1);
 	}
 	c = malloc(sizeof(t_cmd));
-	cmd_folders = allocate_memory();
-	find_command(c, argv, cmd_folders);
-	find_flags(c, argv);
-	create_pipe(c, argv);
-	free(c);
-	return (0);
+    c->cmd_count = argc;
+    add_cmds_to_arr(c, argv);
+    return (0);
 }

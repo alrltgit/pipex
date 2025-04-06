@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.c                                            :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apple <apple@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/29 17:13:57 by apple             #+#    #+#             */
-/*   Updated: 2025/04/06 19:18:11 by apple            ###   ########.fr       */
+/*   Created: 2025/04/06 22:47:43 by apple             #+#    #+#             */
+/*   Updated: 2025/04/06 22:49:28 by apple            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/pipex.h"
+#include "../includes/pipex.h"
 
-int	main(int argc, char **argv)
+void	free_arr(char **array)
 {
-	char	**cmd_folders;
-	t_cmd	*c;
+	int	i;
 
-	if (argc < 5)
+	if (!array)
+		return ;
+	i = 0;
+	while (array[i] != NULL)
 	{
-		ft_printf("Not enough arguments.");
-		exit(1);
+		free(array[i]);
+		i++;
 	}
-	c = malloc(sizeof(t_cmd));
-	cmd_folders = allocate_memory();
-	find_command(c, argv, cmd_folders);
-	find_flags(c, argv);
-	create_pipe(c, argv);
-	free(c);
-	return (0);
+	free(array);
 }

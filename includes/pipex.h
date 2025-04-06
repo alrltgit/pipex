@@ -6,7 +6,7 @@
 /*   By: apple <apple@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 17:12:22 by apple             #+#    #+#             */
-/*   Updated: 2025/04/06 15:34:20 by apple            ###   ########.fr       */
+/*   Updated: 2025/04/06 22:49:36 by apple            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ typedef struct s_cmd
 	char	*cmd_2;
 	char	*flag_1;
 	char	*flag_2;
+	char	**cmds;
+	int			cmd_count;
 }	t_cmd;
 
 char	*ft_strconcat(t_cmd *c, char *path, char *str);
@@ -52,4 +54,7 @@ void	create_pipe(t_cmd *c, char **argv);
 char	**create_arr_for_execve(char *cmd, char *flag);
 void	find_flags(t_cmd *c, char **argv);
 
+void	add_cmds_to_arr(t_cmd *c, char **argv);
+
+void	free_arr(char **array);
 #endif
