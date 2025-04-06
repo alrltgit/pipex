@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.c                                            :+:      :+:    :+:   */
+/*   helpers_2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apple <apple@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/29 17:13:57 by apple             #+#    #+#             */
-/*   Updated: 2025/04/06 18:27:55 by apple            ###   ########.fr       */
+/*   Created: 2025/04/06 13:25:17 by apple             #+#    #+#             */
+/*   Updated: 2025/04/06 15:33:02 by apple            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/pipex.h"
 
-int	main(int argc, char **argv)
+char	**create_arr_for_execve(char *cmd, char *flag)
 {
-	char	**cmd_folders;
-	t_cmd	*c;
+	char	**argv_arr;
 
-	(void)argc;
-	if (argc < 5)
+	argv_arr = malloc(sizeof(char *) * 3);
+	if (!argv_arr)
+		return (NULL);
+	argv_arr[0] = cmd;
+	argv_arr[1] = flag;
+	argv_arr[2] = NULL;
+	return (argv_arr);
+}
+
+void	fd_is_open(int pipe_fd_2)
+{
+	if (pipe_fd_2 < 0)
 	{
-		ft_printf("Not enough arguments.");
-		exit(1);
+		perror("Error");
+		exit(EXIT_FAILURE);
 	}
-	c = malloc(sizeof(t_cmd));
-	cmd_folders = allocate_memory();
-	find_command(c, argv, cmd_folders);
-	find_flags(c, argv);
-	create_pipe(c, argv);
-	free(c);
-	return (0);
 }

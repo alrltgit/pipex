@@ -6,7 +6,7 @@
 #    By: apple <apple@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/29 17:11:47 by apple             #+#    #+#              #
-#    Updated: 2025/04/05 13:55:21 by apple            ###   ########.fr        #
+#    Updated: 2025/04/06 14:50:36 by apple            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ CFLAGS = -Wall -Wextra -Werror -g
 
 SRC = pipex.c \
 helpers.c \
+helpers_2.c \
 free_funcs.c \
 commands_validation.c \
 create_pipe.c \
