@@ -6,11 +6,11 @@
 /*   By: apple <apple@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 13:52:55 by apple             #+#    #+#             */
-/*   Updated: 2025/04/05 16:30:40 by apple            ###   ########.fr       */
+/*   Updated: 2025/04/07 18:07:30 by apple            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/pipex.h"
+#include "../includes/pipex.h"
 
 static int	find_size_of_arr(char **argv)
 {
@@ -62,16 +62,17 @@ char	*ft_arrconcat(char *path, char *str)
 	return (cmd);
 }
 
-void	concat_several_flags(t_cmd *c, char **argv_arr)
+char	*concat_several_flags(char *flag, char **argv_arr)
 {
 	int	i;
 
 	i = 1;
 	while (argv_arr[i + 1] != NULL)
 	{
-		c->flag_1 = ft_arrconcat(c->flag_1, argv_arr[i + 1]);
+		flag = ft_arrconcat(flag, argv_arr[i + 1]);
 		i++;
 	}
+	return (flag);
 }
 
 void	find_flags(t_cmd *c, char **argv)
@@ -94,9 +95,9 @@ void	find_flags(t_cmd *c, char **argv)
 	else
 		c->flag_2 = argv_3_arr[1];
 	if (len_2 > 2)
-		concat_several_flags(c, argv_2_arr);
+		c->flag_1 = concat_several_flags(c->flag_1, argv_2_arr);
 	if (len_3 > 2)
-		concat_several_flags(c, argv_3_arr);
+		c->flag_2 = concat_several_flags(c->flag_2, argv_3_arr);
 	free(argv_2_arr);
 	free(argv_3_arr);
 }

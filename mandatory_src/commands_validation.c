@@ -6,11 +6,11 @@
 /*   By: apple <apple@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 16:31:30 by apple             #+#    #+#             */
-/*   Updated: 2025/04/06 15:01:44 by apple            ###   ########.fr       */
+/*   Updated: 2025/04/07 16:48:52 by apple            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/pipex.h"
+#include "../includes/pipex.h"
 
 int	cmd_1_is_valid(t_cmd *c, char **cmd_folders, char **argv)
 {

@@ -6,7 +6,7 @@
 #    By: apple <apple@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/29 17:11:47 by apple             #+#    #+#              #
-#    Updated: 2025/04/06 22:50:56 by apple            ###   ########.fr        #
+#    Updated: 2025/04/07 16:56:34 by apple            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,18 +16,22 @@ RM = rm -f
 
 CFLAGS = -Wall -Wextra -Werror -g
 
-SRC = pipex.c \
-helpers.c \
-helpers_2.c \
-free_funcs.c \
-commands_validation.c \
-create_pipe.c \
-find_cmd.c \
-find_flags.c
+SRC = mandatory_src/pipex.c \
+mandatory_src/helpers.c \
+mandatory_src/helpers_2.c \
+mandatory_src/free_funcs.c \
+mandatory_src/commands_validation.c \
+mandatory_src/create_pipe.c \
+mandatory_src/find_cmd.c \
+mandatory_src/find_flags.c
 
-BONUS_SRC = bonus/pipex.c \
-bonus/add_cmds_to_arr.c \
-bonus/free.c
+BONUS_SRC = bonus_src/pipex_bonus.c \
+bonus_src/add_cmds_to_arr.c \
+bonus_src/free.c \
+bonus_src/helpers.c \
+bonus_src/helpers_2.c \
+bonus_src/add_args_to_arr.c \
+bonus_src/create_pipe_bonus.c
 
 OBJS = $(SRC:.c=.o)
 

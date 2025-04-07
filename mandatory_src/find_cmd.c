@@ -6,11 +6,11 @@
 /*   By: apple <apple@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 16:33:43 by apple             #+#    #+#             */
-/*   Updated: 2025/04/06 14:52:01 by apple            ###   ########.fr       */
+/*   Updated: 2025/04/07 16:49:10 by apple            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/pipex.h"
+#include "../includes/pipex.h"
 
 static char	*find_cmd_1(t_cmd *c, char **cmd_folders, char **argv)
 {
