@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helpers_2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apple <apple@student.42.fr>                +#+  +:+       +#+        */
+/*   By: alraltse <alraltse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/06 13:25:17 by apple             #+#    #+#             */
-/*   Updated: 2025/04/07 16:49:42 by apple            ###   ########.fr       */
+/*   Updated: 2025/04/08 18:39:50 by alraltse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ char	**create_arr_for_execve(char *cmd, char *flag)
 	argv_arr = malloc(sizeof(char *) * 3);
 	if (!argv_arr)
 		return (NULL);
-	argv_arr[0] = cmd;
-	argv_arr[1] = flag;
+	argv_arr[0] = ft_strdup(cmd);
+	argv_arr[1] = ft_strdup(flag);
 	argv_arr[2] = NULL;
 	return (argv_arr);
 }

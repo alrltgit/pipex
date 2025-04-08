@@ -3,38 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   create_pipe.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apple <apple@student.42.fr>                +#+  +:+       +#+        */
+/*   By: alraltse <alraltse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 17:49:04 by apple             #+#    #+#             */
-/*   Updated: 2025/04/07 18:05:16 by apple            ###   ########.fr       */
+/*   Updated: 2025/04/08 17:09:21 by alraltse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-static void	exit_process(void)
-{
-	int	status;
-	int	exit_code;
-	int	code;
+// int	exit_process(void)
+// {
+// 	int	status;
+// 	int	exit_code;
+// 	int	code;
 
-	status = 0;
-	exit_code = 0;
-	while (wait(&status) > 0)
-	{
-		if (WIFEXITED(status))
-		{
-			code = WEXITSTATUS(status);
-			if (code != 0)
-				exit_code = code;
-		}
-		else if (WIFSIGNALED(status))
-		{
-			exit_code = 1;
-		}
-	}
-	exit(exit_code);
-}
+// 	status = 0;
+// 	exit_code = 0;
+// 	while (wait(&status) > 0)
+// 	{
+// 		if (WIFEXITED(status))
+// 		{
+// 			code = WEXITSTATUS(status);
+// 			if (code != 0)
+// 				exit_code = code;
+// 		}
+// 		else if (WIFSIGNALED(status))
+// 		{
+// 			exit_code = 1;
+// 		}
+// 	}
+// 	// exit(exit_code);
+// 	return (exit_code);
+// }
 
 static void	create_child_process_2(t_cmd *c,
 	int *pipe_fd, char **args_2, int pipe_fd_2)
@@ -121,7 +122,9 @@ void	create_pipe(t_cmd *c, char **argv)
 	pipe_fd_2 = 0;
 	create_child_process_2(c, pipe_fd, args_2, pipe_fd_2);
 	close_fds(pipe_fd, pipe_fd_1, pipe_fd_2);
-	exit_process();
+	while (wait(NULL) > 0)
+			;
 	free_array(args_1);
 	free_array(args_2);
+	// exit_process();
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apple <apple@student.42.fr>                +#+  +:+       +#+        */
+/*   By: alraltse <alraltse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 17:12:22 by apple             #+#    #+#             */
-/*   Updated: 2025/04/07 16:11:18 by apple            ###   ########.fr       */
+/*   Updated: 2025/04/08 17:20:38 by alraltse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@
 typedef struct s_cmd
 {
 	char	**cmd_folders;
+	char	**argv_2_arr;
+	char	**argv_3_arr;
 	char	*cmd_1;
 	char	*cmd_2;
 	char	*flag_1;
@@ -65,4 +67,6 @@ void	fd_is_open_bonus(int pipe_fd_2);
 void	did_fork_fail(pid_t pid);
 void	free_arr(char **array);
 void	free_args(char ***args);
+
+// int	exit_process(void);
 #endif
