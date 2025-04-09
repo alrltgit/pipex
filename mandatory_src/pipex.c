@@ -6,7 +6,7 @@
 /*   By: alraltse <alraltse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 17:13:57 by apple             #+#    #+#             */
-/*   Updated: 2025/04/09 13:46:26 by alraltse         ###   ########.fr       */
+/*   Updated: 2025/04/09 16:31:39 by alraltse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	main(int argc, char **argv)
 {
 	t_cmd	*c;
-	// int exit_code;
 
 	if (argc < 5)
 	{

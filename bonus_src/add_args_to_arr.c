@@ -6,7 +6,7 @@
 /*   By: alraltse <alraltse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:50:55 by apple             #+#    #+#             */
-/*   Updated: 2025/04/08 13:40:13 by alraltse         ###   ########.fr       */
+/*   Updated: 2025/04/09 16:22:05 by alraltse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void add_args_to_arr(t_cmd *c, char **argv)
         return;
     while (c->cmds[i] && j < c->cmd_count - 1)
     {
-        c->args[i] = ft_split(c->cmds[i], ' ');
+        c->args_bonus[i] = ft_split(c->cmds[i], ' ');
         if (!c->args[i])
             return;
         i++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_pipe_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apple <apple@student.42.fr>                +#+  +:+       +#+        */
+/*   By: alraltse <alraltse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:13 by apple             #+#    #+#             */
-/*   Updated: 2025/04/08 10:40:44 by apple            ###   ########.fr       */
+/*   Updated: 2025/04/09 16:22:18 by alraltse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static void	handle_child_process(t_cmd *c, int fd, int *pipe_fd, int i)
 	if (i < c->cmd_count - 1)
 		close(pipe_fd[0]);
 	envp[0] = NULL;
-	execve(c->cmds[i], c->args[i], envp);
+	execve(c->cmds[i], c->args_bonus[i], envp);
 	perror("execve failed");
 	exit(EXIT_FAILURE);
 }
