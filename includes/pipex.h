@@ -6,7 +6,7 @@
 /*   By: alraltse <alraltse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 17:12:22 by apple             #+#    #+#             */
-/*   Updated: 2025/04/09 13:45:28 by alraltse         ###   ########.fr       */
+/*   Updated: 2025/04/09 14:21:56 by alraltse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,12 @@
 typedef struct s_cmd
 {
 	char	**cmd_folders;
-	char	**argv_2_arr;
-	char	**argv_3_arr;
 	char	*cmd_1;
 	char	*cmd_2;
 	char	*flag_1;
 	char	*flag_2;
 	char	**cmds;
-	char	***args;
+	char	**args;
 	int		cmd_count;
 }	t_cmd;
 

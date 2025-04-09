@@ -6,7 +6,7 @@
 /*   By: alraltse <alraltse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/06 13:25:17 by apple             #+#    #+#             */
-/*   Updated: 2025/04/08 18:39:50 by alraltse         ###   ########.fr       */
+/*   Updated: 2025/04/09 15:33:54 by alraltse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ char	**create_arr_for_execve(char *cmd, char *flag)
 	if (!argv_arr)
 		return (NULL);
 	argv_arr[0] = ft_strdup(cmd);
-	argv_arr[1] = ft_strdup(flag);
+	if (flag == NULL)
+		argv_arr[1] = NULL;
+	else
+		argv_arr[1] = ft_strdup(flag);
 	argv_arr[2] = NULL;
 	return (argv_arr);
 }
