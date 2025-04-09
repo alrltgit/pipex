@@ -3,14 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   helpers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alraltse <alraltse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: apple <apple@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/30 18:22:48 by apple             #+#    #+#             */
-/*   Updated: 2025/04/09 13:15:52 by alraltse         ###   ########.fr       */
+/*   Updated: 2025/04/09 17:57:26 by apple            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
+
+void	fd_is_open(int pipe_fd_2)
+{
+	if (pipe_fd_2 < 0)
+	{
+		perror("Error");
+		exit(EXIT_FAILURE);
+	}
+}
 
 static size_t	size_of_str(char *str)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alraltse <alraltse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: apple <apple@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 17:12:22 by apple             #+#    #+#             */
-/*   Updated: 2025/04/09 16:34:30 by alraltse         ###   ########.fr       */
+/*   Updated: 2025/04/09 17:56:35 by apple            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,9 @@ int		do_commands_exist(t_cmd *c, char **argv, char **cmd_folders);
 void		create_pipe(t_cmd *c, char **argv);
 char	**create_arr_for_execve(char *cmd, char *flag);
 void	find_flags(t_cmd *c, char **argv);
+char	*concat_several_flags(char *flag, char **argv_arr);
+char	*ft_arrconcat(char *path, char *str);
+int	find_size_of_arr(char **argv);
 
 char	**allocate_memory_bonus(t_cmd *c);
 void	add_cmds_to_arr(t_cmd *c, char **argv);

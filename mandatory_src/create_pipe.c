@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_pipe.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alraltse <alraltse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: apple <apple@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 17:49:04 by apple             #+#    #+#             */
-/*   Updated: 2025/04/09 13:45:38 by alraltse         ###   ########.fr       */
+/*   Updated: 2025/04/09 18:10:20 by apple            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void	create_pipe(t_cmd *c, char **argv)
 	create_child_process_2(c, pipe_fd, args_2, pipe_fd_2);
 	close_fds(pipe_fd, pipe_fd_1, pipe_fd_2);
 	while (wait(NULL) > 0)
-			;
+		;
 	free_array(args_1);
 	free_array(args_2);
 }

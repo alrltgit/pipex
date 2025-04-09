@@ -12,7 +12,7 @@
 
 #include "../includes/pipex.h"
 
-void free_program(t_cmd *c)
+void	free_program(t_cmd *c)
 {
 	free_array(c->cmd_folders);
 	free(c->cmd_1);

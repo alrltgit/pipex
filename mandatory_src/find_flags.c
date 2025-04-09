@@ -3,149 +3,105 @@
 /*                                                        :::      ::::::::   */
 /*   find_flags.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alraltse <alraltse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: apple <apple@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 13:52:55 by apple             #+#    #+#             */
-/*   Updated: 2025/04/09 16:43:14 by alraltse         ###   ########.fr       */
+/*   Updated: 2025/04/09 18:09:00 by apple            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-static int	find_size_of_arr(char **argv)
+static void	skip_whitespace(const char *str, int *i)
 {
-	int	len;
-
-	len = 0;
-	while (argv[len])
-		len++;
-	return (len);
+	while (str[*i] == ' ' || str[*i] == '\t')
+		(*i)++;
 }
 
-char	*ft_arrcpy(char *cmd, char *str, int j)
+static void	trim_quotes_if_needed(char *token, int len)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
+	if ((token[0] == '\'' && token[len - 1] == '\'')
+		|| (token[0] == '"' && token[len - 1] == '"'))
 	{
-		cmd[j] = str[i];
-		j++;
-		i++;
+		token[len - 1] = '\0';
+		ft_memmove(token, token + 1, len - 1);
 	}
-	cmd[j] = '\0';
-	return (cmd);
 }
 
-char	*ft_arrconcat(char *path, char *str)
+static char	*extract_token(const char *str, int *i)
 {
-	int		i;
-	int		j;
-	char	*cmd;
+	int		start;
+	int		single_q;
+	int		double_q;
+	int		len;
+	char	*token;
 
-	cmd = malloc(sizeof(char) * (ft_strlen(path) + ft_strlen(str) + 2));
-	if (!cmd)
+	start = *i;
+	single_q = 0;
+	double_q = 0;
+	while (str[*i])
 	{
-		perror("Allocation failed.\n");
+		if (str[*i] == '\'' && !double_q)
+			single_q = !single_q;
+		else if (str[*i] == '"' && !single_q)
+			double_q = !double_q;
+		else if ((str[*i] == ' ' || str[*i] == '\t') && !single_q && !double_q)
+			break ;
+		(*i)++;
+	}
+	len = *i - start;
+	token = ft_substr(str, start, len);
+	if (!token)
 		return (NULL);
-	}
-	j = 0;
-	i = 0;
-	while (path[i])
-	{
-		cmd[j] = path[i];
-		i++;
-		j++;
-	}
-	cmd[j++] = ' ';
-	ft_arrcpy(cmd, str, j);
-	return (cmd);
-}
-
-char	*concat_several_flags(char *flag, char **argv_arr)
-{
-	int	i;
-
-	i = 1;
-	while (argv_arr[i + 1] != NULL)
-	{
-		flag = ft_arrconcat(flag, argv_arr[i + 1]);
-		i++;
-	}
-	return (flag);
+	trim_quotes_if_needed(token, len);
+	return (token);
 }
 
 static char	**split_args(const char *str)
 {
-	char	**result = NULL;
-	int		i = 0;
-	int		start = 0;
-	int		in_single = 0;
-	int		in_double = 0;
-	int		count = 0;
+	char	**result;
+	char	*token;
+	int		i;
+	int		count;
 
 	result = malloc(sizeof(char *) * 1024);
 	if (!result)
 		return (NULL);
+	i = 0;
+	count = 0;
 	while (str[i])
 	{
-		while (str[i] == ' ' || str[i] == '\t')
-			i++;
-
+		skip_whitespace(str, &i);
 		if (!str[i])
-			break;
-
-		start = i;
-		in_single = 0;
-		in_double = 0;
-
-		while (str[i])
-		{
-			if (str[i] == '\'' && !in_double)
-				in_single = !in_single;
-			else if (str[i] == '\"' && !in_single)
-				in_double = !in_double;
-			else if ((str[i] == ' ' || str[i] == '\t') && !in_single && !in_double)
-				break;
-			i++;
-		}
-		int len = i - start;
-		char *token = ft_strdup(str + start);
+			break ;
+		token = extract_token(str, &i);
 		if (!token)
 			return (NULL);
-		if ((token[0] == '\'' && token[len - 1] == '\'') || (token[0] == '"' && token[len - 1] == '"'))
-		{
-			token[len - 1] = '\0';
-			ft_memmove(token, token + 1, len - 1);
-		}
-
 		result[count++] = token;
 	}
 	result[count] = NULL;
 	return (result);
 }
 
-void find_flags(t_cmd *c, char **argv)
+void	find_flags(t_cmd *c, char **argv)
 {
-	char **argv_2_arr;
-	char **argv_3_arr;
-    int len_2;
-    int len_3;
+	char	**argv_2_arr;
+	char	**argv_3_arr;
+	int		len_2;
+	int		len_3;
 
-    argv_2_arr = split_args(argv[2]);
-    argv_3_arr = split_args(argv[3]);
-    len_2 = find_size_of_arr(argv_2_arr);
-    len_3 = find_size_of_arr(argv_3_arr);
-
-    if (len_2 > 1)
-        c->flag_1 = concat_several_flags(ft_strdup(argv_2_arr[1]), argv_2_arr);
-    else
-        c->flag_1 = NULL;
-
-    if (len_3 > 1)
-        c->flag_2 = concat_several_flags(ft_strdup(argv_3_arr[1]), argv_3_arr);
-    else
-        c->flag_2 = NULL;
-    free_array(argv_2_arr);
-    free_array(argv_3_arr);
+	argv_2_arr = split_args(argv[2]);
+	argv_3_arr = split_args(argv[3]);
+	len_2 = find_size_of_arr(argv_2_arr);
+	len_3 = find_size_of_arr(argv_3_arr);
+	if (len_2 > 1)
+		c->flag_1 = concat_several_flags(ft_strdup(argv_2_arr[1]), argv_2_arr);
+	else
+		c->flag_1 = NULL;
+	if (len_3 > 1)
+		c->flag_2 = concat_several_flags(ft_strdup(argv_3_arr[1]), argv_3_arr);
+	else
+		c->flag_2 = NULL;
+	free_array(argv_2_arr);
+	free_array(argv_3_arr);
 }
