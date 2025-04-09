@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apple <apple@student.42.fr>                +#+  +:+       +#+        */
+/*   By: alraltse <alraltse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 17:13:57 by apple             #+#    #+#             */
-/*   Updated: 2025/04/09 18:10:34 by apple            ###   ########.fr       */
+/*   Updated: 2025/04/09 18:25:34 by alraltse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	main(int argc, char **argv)
 	c->cmd_folders = allocate_memory(c);
 	if (do_commands_exist(c, argv, c->cmd_folders) == 0)
 	{
+		
 		free_array(c->cmd_folders);
 		free(c);
 		exit(EXIT_SUCCESS);

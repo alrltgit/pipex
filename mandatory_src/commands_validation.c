@@ -6,7 +6,7 @@
 /*   By: alraltse <alraltse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 16:31:30 by apple             #+#    #+#             */
-/*   Updated: 2025/04/09 12:56:48 by alraltse         ###   ########.fr       */
+/*   Updated: 2025/04/09 18:30:01 by alraltse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int	cmd_2_is_valid(t_cmd *c, char **cmd_folders, char **argv)
 		free(c->cmd_2);
 		free(temp_result);
 	}
+	free(c->cmd_1);
 	return (flag_2);
 }
 
@@ -70,7 +71,10 @@ int	do_commands_exist(t_cmd *c, char **argv, char **cmd_folders)
 		if (cmd_1_is_valid(c, cmd_folders, argv) == 0)
 			ft_printf("Command doesn't exist: %s\n", argv[2]);
 		else
+		{
+			free(c->cmd_1);
 			ft_printf("Command doesn't exist: %s\n", argv[3]);
+		}
 		return (0);
 	}
 	return (1);
