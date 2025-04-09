@@ -6,7 +6,7 @@
 /*   By: alraltse <alraltse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 17:13:57 by apple             #+#    #+#             */
-/*   Updated: 2025/04/08 19:04:26 by alraltse         ###   ########.fr       */
+/*   Updated: 2025/04/09 13:01:17 by alraltse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	main(int argc, char **argv)
 {
-	//char	**cmd_folders;
 	t_cmd	*c;
 
 	if (argc < 5)
@@ -24,15 +23,17 @@ int	main(int argc, char **argv)
 	}
 	c = malloc(sizeof(t_cmd));
 	c->cmd_folders = allocate_memory(c);
-	// find_command(c, argv, cmd_folders);
 	if (do_commands_exist(c, argv, c->cmd_folders) == 0)
+	{
+		free_array(c->cmd_folders);
+		free(c);
 		exit(EXIT_FAILURE);
+	}
 	else
 	{
 		find_flags(c, argv);
 		create_pipe(c, argv);
 	}
-	// ft_printf("TEST.\n");
 	free_array(c->cmd_folders);
 	free(c->cmd_1);
 	free(c->cmd_2);
