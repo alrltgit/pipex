@@ -6,33 +6,33 @@
 /*   By: alraltse <alraltse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:13 by apple             #+#    #+#             */
-/*   Updated: 2025/04/09 16:22:18 by alraltse         ###   ########.fr       */
+/*   Updated: 2025/04/09 17:09:27 by alraltse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-static void	exit_process_bonus(void)
-{
-	int	status;
-	int	exit_code;
-	int	code;
+// static void	exit_process_bonus(void)
+// {
+// 	int	status;
+// 	int	exit_code;
+// 	int	code;
 
-	status = 0;
-	exit_code = 0;
-	while (wait(&status) > 0)
-	{
-		if (WIFEXITED(status))
-		{
-			code = WEXITSTATUS(status);
-			if (code != 0)
-				exit_code = code;
-		}
-		else if (WIFSIGNALED(status))
-			exit_code = 1;
-	}
-	exit(exit_code);
-}
+// 	status = 0;
+// 	exit_code = 0;
+// 	while (wait(&status) > 0)
+// 	{
+// 		if (WIFEXITED(status))
+// 		{
+// 			code = WEXITSTATUS(status);
+// 			if (code != 0)
+// 				exit_code = code;
+// 		}
+// 		else if (WIFSIGNALED(status))
+// 			exit_code = 1;
+// 	}
+// 	exit(exit_code);
+// }
 
 static void	call_pipe(t_cmd *c, int *pipe_fd, int i)
 {
@@ -102,5 +102,7 @@ void	create_pipe_bonus(t_cmd *c)
 			fd = handle_pipe_fds(pipe_fd, fd);
 		i++;
 	}
-	exit_process_bonus();
+	while (wait(NULL) > 0)
+			;
+	// exit_process_bonus();
 }
