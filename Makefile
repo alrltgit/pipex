@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: apple <apple@student.42.fr>                +#+  +:+       +#+         #
+#    By: alraltse <alraltse@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/29 17:11:47 by apple             #+#    #+#              #
-#    Updated: 2025/04/07 16:56:34 by apple            ###   ########.fr        #
+#    Updated: 2025/04/09 13:05:28 by alraltse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,6 @@ mandatory_src/helpers_2.c \
 mandatory_src/free_funcs.c \
 mandatory_src/commands_validation.c \
 mandatory_src/create_pipe.c \
-mandatory_src/find_cmd.c \
 mandatory_src/find_flags.c
 
 BONUS_SRC = bonus_src/pipex_bonus.c \

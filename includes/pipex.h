@@ -6,7 +6,7 @@
 /*   By: alraltse <alraltse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 17:12:22 by apple             #+#    #+#             */
-/*   Updated: 2025/04/08 17:20:38 by alraltse         ###   ########.fr       */
+/*   Updated: 2025/04/09 13:45:28 by alraltse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,8 @@ void	free_array(char **array);
 void	fd_is_open(int pipe_fd_2);
 int		cmd_1_is_valid(t_cmd *c, char **cmd_folders, char **argv);
 int		cmd_2_is_valid(t_cmd *c, char **cmd_folders, char **argv);
-void	find_command(t_cmd *c, char **argv, char **cmd_folders);
 int		do_commands_exist(t_cmd *c, char **argv, char **cmd_folders);
-void	find_command(t_cmd *c, char **argv, char **cmd_folders);
-void	create_pipe(t_cmd *c, char **argv);
+void		create_pipe(t_cmd *c, char **argv);
 char	**create_arr_for_execve(char *cmd, char *flag);
 void	find_flags(t_cmd *c, char **argv);
 
@@ -67,6 +65,5 @@ void	fd_is_open_bonus(int pipe_fd_2);
 void	did_fork_fail(pid_t pid);
 void	free_arr(char **array);
 void	free_args(char ***args);
-
-// int	exit_process(void);
+void	free_program(t_cmd *c);
 #endif

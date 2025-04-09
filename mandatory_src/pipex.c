@@ -6,7 +6,7 @@
 /*   By: alraltse <alraltse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 17:13:57 by apple             #+#    #+#             */
-/*   Updated: 2025/04/09 13:01:17 by alraltse         ###   ########.fr       */
+/*   Updated: 2025/04/09 13:46:26 by alraltse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	main(int argc, char **argv)
 {
 	t_cmd	*c;
+	// int exit_code;
 
 	if (argc < 5)
 	{
@@ -27,18 +28,14 @@ int	main(int argc, char **argv)
 	{
 		free_array(c->cmd_folders);
 		free(c);
-		exit(EXIT_FAILURE);
+		exit(EXIT_SUCCESS);
 	}
 	else
 	{
 		find_flags(c, argv);
 		create_pipe(c, argv);
+		free_program(c);
+		// exit(exit_code);
 	}
-	free_array(c->cmd_folders);
-	free(c->cmd_1);
-	free(c->cmd_2);
-	free(c->flag_1);
-	free(c->flag_2);
-	free(c);
 	return (0);
 }

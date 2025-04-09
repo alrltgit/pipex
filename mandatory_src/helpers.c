@@ -6,7 +6,7 @@
 /*   By: alraltse <alraltse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/30 18:22:48 by apple             #+#    #+#             */
-/*   Updated: 2025/04/08 19:00:48 by alraltse         ###   ########.fr       */
+/*   Updated: 2025/04/09 13:15:52 by alraltse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,19 @@ static size_t	size_of_str(char *str)
 	return (len);
 }
 
-char	*ft_strcpy(char **cmd, char *str, int j)
+char	*ft_strcpy(char *cmd, char *str, int j)
 {
 	int	i;
 
 	i = 0;
 	while (str[i] != ' ' && str[i])
 	{
-		(*cmd)[j] = str[i];
+		cmd[j] = str[i];
 		j++;
 		i++;
 	}
-	(*cmd)[j] = '\0';
-	return (*cmd);
+	cmd[j] = '\0';
+	return (cmd);
 }
 
 char	*ft_strconcat(t_cmd *c, char *path, char *str)
@@ -58,7 +58,7 @@ char	*ft_strconcat(t_cmd *c, char *path, char *str)
 		i++;
 		j++;
 	}
-	return (ft_strcpy(&cmd, str, j));
+	return (ft_strcpy(cmd, str, j));
 }
 
 char	**allocate_memory(t_cmd *c)

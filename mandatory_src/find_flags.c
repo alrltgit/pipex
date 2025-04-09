@@ -6,7 +6,7 @@
 /*   By: alraltse <alraltse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 13:52:55 by apple             #+#    #+#             */
-/*   Updated: 2025/04/08 18:15:31 by alraltse         ###   ########.fr       */
+/*   Updated: 2025/04/09 13:49:13 by alraltse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ char	*concat_several_flags(char *flag, char **argv_arr)
 		flag = ft_arrconcat(flag, argv_arr[i + 1]);
 		i++;
 	}
-	// free_array(argv_arr);
 	return (flag);
 }
 
