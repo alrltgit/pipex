@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apple <apple@student.42.fr>                +#+  +:+       +#+        */
+/*   By: alraltse <alraltse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 17:12:22 by apple             #+#    #+#             */
-/*   Updated: 2025/04/09 18:14:38 by apple            ###   ########.fr       */
+/*   Updated: 2025/04/11 18:39:33 by alraltse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,17 @@ typedef struct s_cmd
 	char	*cmd_2;
 	char	*flag_1;
 	char	*flag_2;
-	char	**cmds;
-	char	**args;
-	char	***args_bonus;
+	char	**args_1;
+	char	**args_2;
+	int		pipe_fd_1;
+	int		pipe_fd_2;
 	int		cmd_count;
 }	t_cmd;
 
 char	*ft_strconcat(t_cmd *c, char *path, char *str);
 char	**allocate_memory(t_cmd *c);
 void	free_array(char **array);
-void	fd_is_open(int pipe_fd_2);
+void	fd_is_open(t_cmd *c, int pipe_fd_2);
 int		cmd_1_is_valid(t_cmd *c, char **cmd_folders, char **argv);
 int		cmd_2_is_valid(t_cmd *c, char **cmd_folders, char **argv);
 int		do_commands_exist(t_cmd *c, char **argv, char **cmd_folders);

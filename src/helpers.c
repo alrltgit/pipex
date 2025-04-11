@@ -1,18 +1,79 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   helpers_2.c                                        :+:      :+:    :+:   */
+/*   helpers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alraltse <alraltse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/30 18:22:48 by apple             #+#    #+#             */
-/*   Updated: 2025/04/09 16:36:57 by alraltse         ###   ########.fr       */
+/*   Updated: 2025/04/11 18:25:50 by alraltse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-char	**allocate_memory_bonus(t_cmd *c)
+void	fd_is_open(t_cmd *c, int pipe_fd_2)
+{
+	if (pipe_fd_2 < 0)
+	{
+		perror("Error");
+		free_array(c->args_1);
+		free_array(c->args_2);
+		free_program(c);
+		exit(EXIT_FAILURE);
+	}
+}
+
+static size_t	size_of_str(char *str)
+{
+	size_t	len;
+
+	len = 0;
+	while (str[len] != ' ' && str[len])
+		len++;
+	return (len);
+}
+
+char	*ft_strcpy(char *cmd, char *str, int j)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != ' ' && str[i])
+	{
+		cmd[j] = str[i];
+		j++;
+		i++;
+	}
+	cmd[j] = '\0';
+	return (cmd);
+}
+
+char	*ft_strconcat(t_cmd *c, char *path, char *str)
+{
+	int		i;
+	int		j;
+	char	*cmd;
+
+	(void)c;
+	cmd = malloc(sizeof(char) * (ft_strlen(path) + size_of_str(str) + 1));
+	if (!cmd)
+	{
+		perror("Allocation failed.\n");
+		return (NULL);
+	}
+	j = 0;
+	i = 0;
+	while (path[i])
+	{
+		cmd[j] = path[i];
+		i++;
+		j++;
+	}
+	return (ft_strcpy(cmd, str, j));
+}
+
+char	**allocate_memory(t_cmd *c)
 {
 	c->cmd_folders = malloc(sizeof(char *) * (10 + 1));
 	c->cmd_folders[0] = ft_strdup(PATH_HOMES_BIN);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex_bonus.c                                      :+:      :+:    :+:   */
+/*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alraltse <alraltse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/06 19:15:17 by apple             #+#    #+#             */
-/*   Updated: 2025/04/09 17:12:02 by alraltse         ###   ########.fr       */
+/*   Created: 2025/03/29 17:13:57 by apple             #+#    #+#             */
+/*   Updated: 2025/04/11 18:24:00 by alraltse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,24 @@ int	main(int argc, char **argv)
 {
 	t_cmd	*c;
 
-	if (argc < 5)
+	if (argc != 5)
 	{
-		ft_printf("Not enough arguments.");
+		ft_printf("The amount of arguments is not correct.\n");
 		exit(1);
 	}
 	c = malloc(sizeof(t_cmd));
-	c->cmd_count = argc;
-	c->cmd_folders = allocate_memory_bonus(c);
-	add_cmds_to_arr(c, argv);
-	add_args_to_arr(c, argv);
-	// ft_printf("test2\n");
-	create_pipe_bonus(c);
-	// ft_printf("test3\n");
-	// free(c->cmds);
-	// free_args(c->args_bonus);
-	// free_arr(c->cmd_folders);
-	// free(c);
+	c->cmd_folders = allocate_memory(c);
+	if (do_commands_exist(c, argv, c->cmd_folders) == 0)
+	{
+		free_array(c->cmd_folders);
+		free(c);
+		exit(EXIT_SUCCESS);
+	}
+	else
+	{
+		find_flags(c, argv);
+		create_pipe(c, argv);
+		free_program(c);
+	}
 	return (0);
 }
