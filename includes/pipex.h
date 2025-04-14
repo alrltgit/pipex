@@ -6,7 +6,7 @@
 /*   By: alraltse <alraltse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 17:12:22 by apple             #+#    #+#             */
-/*   Updated: 2025/04/11 18:39:33 by alraltse         ###   ########.fr       */
+/*   Updated: 2025/04/14 16:50:00 by alraltse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ typedef struct s_cmd
 	char	**args_2;
 	int		pipe_fd_1;
 	int		pipe_fd_2;
-	int		cmd_count;
 }	t_cmd;
 
 char	*ft_strconcat(t_cmd *c, char *path, char *str);
@@ -52,21 +51,12 @@ void	fd_is_open(t_cmd *c, int pipe_fd_2);
 int		cmd_1_is_valid(t_cmd *c, char **cmd_folders, char **argv);
 int		cmd_2_is_valid(t_cmd *c, char **cmd_folders, char **argv);
 int		do_commands_exist(t_cmd *c, char **argv, char **cmd_folders);
-void	create_pipe(t_cmd *c, char **argv);
+int		create_pipe(t_cmd *c, char **argv);
 char	**create_arr_for_execve(char *cmd, char *flag);
-void	find_flags(t_cmd *c, char **argv);
+int		find_flags(t_cmd *c, char **argv);
 char	*concat_several_flags(char *flag, char **argv_arr);
 char	*ft_arrconcat(char *path, char *str);
 int		find_size_of_arr(char **argv);
-char	**allocate_memory_bonus(t_cmd *c);
-void	add_cmds_to_arr(t_cmd *c, char **argv);
-void	add_args_to_arr(t_cmd *c, char **argv);
-char	*ft_strconcat_bonus(t_cmd *c, char *path, char *str);
-void	create_pipe_bonus(t_cmd *c);
-void	fd_is_open_bonus(int pipe_fd_2);
-void	did_fork_fail(pid_t pid);
-void	free_arr(char **array);
-void	free_args(char ***args);
 void	free_program(t_cmd *c);
 
 #endif

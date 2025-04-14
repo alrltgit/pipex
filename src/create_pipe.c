@@ -6,11 +6,28 @@
 /*   By: alraltse <alraltse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 17:49:04 by apple             #+#    #+#             */
-/*   Updated: 2025/04/11 19:01:06 by alraltse         ###   ########.fr       */
+/*   Updated: 2025/04/14 16:00:04 by alraltse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
+
+static int	exit_code(void)
+{
+	int	status;
+	int	exit_code;
+
+	status = 0;
+	exit_code = 0;
+	while (wait(&status) > 0)
+	{
+		if (WIFEXITED(status))
+			exit_code = WEXITSTATUS(status);
+		else if (WIFSIGNALED(status))
+			exit_code = 1;
+	}
+	return (exit_code);
+}
 
 static void	create_child_process_2(t_cmd *c,
 	int *pipe_fd, char **args_2, char **argv)
@@ -76,7 +93,7 @@ static void	close_fds(int *pipe_fd, int pipe_fd_1, int pipe_fd_2)
 	close(pipe_fd_2);
 }
 
-void	create_pipe(t_cmd *c, char **argv)
+int	create_pipe(t_cmd *c, char **argv)
 {
 	int		pipe_fd[2];
 
@@ -93,8 +110,7 @@ void	create_pipe(t_cmd *c, char **argv)
 	c->pipe_fd_2 = 0;
 	create_child_process_2(c, pipe_fd, c->args_2, argv);
 	close_fds(pipe_fd, c->pipe_fd_1, c->pipe_fd_2);
-	while (wait(NULL) > 0)
-		;
 	free_array(c->args_1);
 	free_array(c->args_2);
+	return (exit_code());
 }

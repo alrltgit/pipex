@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_flags.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apple <apple@student.42.fr>                +#+  +:+       +#+        */
+/*   By: alraltse <alraltse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 13:52:55 by apple             #+#    #+#             */
-/*   Updated: 2025/04/09 18:09:00 by apple            ###   ########.fr       */
+/*   Updated: 2025/04/14 16:00:51 by alraltse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ static char	**split_args(const char *str)
 	return (result);
 }
 
-void	find_flags(t_cmd *c, char **argv)
+int	find_flags(t_cmd *c, char **argv)
 {
 	char	**argv_2_arr;
 	char	**argv_3_arr;
@@ -104,4 +104,5 @@ void	find_flags(t_cmd *c, char **argv)
 		c->flag_2 = NULL;
 	free_array(argv_2_arr);
 	free_array(argv_3_arr);
+	return (1);
 }
