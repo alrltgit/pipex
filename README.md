@@ -1,0 +1,1 @@
+Pipex is a 42 project that replicates the behavior of shell pipelines. It focuses on using UNIX system calls — like fork, execve, pipe, and dup2 — to implement inter-process communication. The goal is to execute shell-like command chaining with input and output redirection using C.
